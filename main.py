@@ -23,7 +23,11 @@ while continueGame:
         if event.type == pygame.QUIT:
             continueGame = False
     screen.fill(black)
-    for i in range(10):
-        pygame.draw.rect(screen, white, [i * boxWidth + boxMargin, boxMargin, boxWidth, boxHeight])
+    for row in range(10):
+        for col in range(10):
+            pygame.draw.rect(screen, white, [(row * boxWidth) + ((row + 1) * boxMargin),
+                                             (col * boxWidth) + ((col + 1) * boxMargin),
+                                             boxWidth,
+                                             boxHeight])
     pygame.display.flip()
 pygame.quit()
