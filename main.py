@@ -1,19 +1,12 @@
-import sys
 import pygame
+from constants.COLORS import *
 
 pygame.init()
 
-size = width, height = 255, 255
+size = width, height = 755, 425
 
-boxWidth = boxHeight = 20
-boxMargin = 5
-
-# Colors
-black = 0, 0, 0
-white = 255, 255, 255
-green = 0, 255, 0
-red = 255, 0, 0
-blue = 0, 0, 255
+boxWidth = boxHeight = 10
+boxMargin = 2
 
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("A-Star Pathfinding Visualized")
@@ -22,12 +15,16 @@ while continueGame:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             continueGame = False
-    screen.fill(black)
-    for row in range(10):
-        for col in range(10):
-            pygame.draw.rect(screen, white, [(row * boxWidth) + ((row + 1) * boxMargin),
+    screen.fill(BLACK)
+    for row in range(45):
+        for col in range(35):
+            # Draw a grid tile
+            pygame.draw.rect(screen, WHITE, [(row * boxWidth) + ((row + 1) * boxMargin),
                                              (col * boxWidth) + ((col + 1) * boxMargin),
                                              boxWidth,
                                              boxHeight])
+    mouse_pos = pygame.mouse.get_pos()
+
+    # pygame.draw.rect(screen, WHITE, [275, boxMargin, boxWidth * 5, boxHeight])
     pygame.display.flip()
 pygame.quit()
